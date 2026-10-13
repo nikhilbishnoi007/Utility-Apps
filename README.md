@@ -1,17 +1,69 @@
-# multiple_screens
+# Utility App
 
-A new Flutter project.
+A Flutter project with multiple screens, featuring a **Calculator** and a **BMI Calculator**. Built to practice Flutter UI, navigation between screens, and basic state management.
+
+## Features
+
+- **Multi-screen navigation** between apps
+- **Calculator**: basic arithmetic operations
+- **BMI Calculator**: calculates Body Mass Index from height and weight
+- More utility apps coming soon
+
+## Tech Stack
+
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
+
+## Screenshots
+
+<!-- Add screenshots here -->
+| Home | Calculator | BMI Calculator |
+|------|------------|----------------|
+| ![Home](screenshots/home.png) | ![Calculator](screenshots/calculator.png) | ![BMI](screenshots/bmi.png) |
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK installed ([installation guide](https://docs.flutter.dev/get-started/install))
+- An emulator, simulator, or a physical device
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Run locally
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+# Clone the repository
+git clone https://github.com/nikhilbishnoi007/utility-app.git
+
+# Go to the project folder
+cd utility-app
+
+# Install dependencies
+flutter pub get
+
+# Run the app
+flutter run
+```
+
+## BMI Categories (WHO)
+
+| BMI | Category |
+|-----|----------|
+| Below 18.5 | Underweight |
+| 18.5 - 24.9 | Normal |
+| 25 - 29.9 | Overweight |
+| 30 and above | Obese |
+
+## Roadmap
+
+- [ ] Unit converter
+- [ ] Todo list
+- [ ] Dark mode
+
+## Author
+
+**Nikhil**
+GitHub: [@nikhilbishnoi007](https://github.com/nikhilbishnoi007)
+
+## License
+
+This project is open source and available for learning purposes.
