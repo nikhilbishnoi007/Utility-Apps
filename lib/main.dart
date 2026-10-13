@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:multiple_screens/screens/bmi_screen.dart';
 import 'package:multiple_screens/screens/calculator_screen.dart';
 import 'package:multiple_screens/screens/splash_screen.dart';
 import 'package:multiple_screens/widgets/home_widgets.dart';
@@ -77,6 +78,7 @@ class SwipeScreens extends StatelessWidget {
         children: const [
           HomeScreen(title: 'Home'),
           Calculator(),
+          BmiScreen()
         ],
       ),
     );
