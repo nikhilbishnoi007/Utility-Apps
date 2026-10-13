@@ -27,10 +27,10 @@ A Flutter project with multiple screens, featuring a **Calculator** and a **BMI 
 
 ```bash
 # Clone the repository
-git clone https://github.com/nikhilbishnoi007/utility-app.git
+git clone https://github.com/nikhilbishnoi007/Utility-Apps.git
 
 # Go to the project folder
-cd utility-app
+cd Utility-Apps
 
 # Install dependencies
 flutter pub get
