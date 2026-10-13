@@ -15,7 +15,7 @@ class SplashScreen extends StatefulWidget {
   void initState() {
     super.initState();
 
-    Timer(Duration(seconds: 5),(){
+    Timer(Duration(seconds: 2),(){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SwipeScreens()));
     });
   }
