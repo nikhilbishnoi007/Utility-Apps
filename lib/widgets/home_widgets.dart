@@ -14,7 +14,7 @@ var userdetail = [
   {"name": "vikash", "RollNo": 1005, "avatar": "assets/images/boy2avatar.jpg"},
   {"name": "hacker", "RollNo": 1006, "avatar": "assets/images/boy3avatar.jpg"},
   {"name": "manish", "RollNo": 1007, "avatar": "assets/images/boy4avatar.jpg"},
-  {"name": "neha", "RollNo": 1008, "avatar": "assets/images/girl2avatar.jpg"},
+  {"name": "apurva", "RollNo": 1008, "avatar": "assets/images/girl2avatar.jpg"},
   {"name": "ankit", "RollNo": 1009, "avatar": "assets/images/boyavatar.jpg"},
   {"name": "zaheer", "RollNo": 1010, "avatar": "assets/images/boy6avatar.jpg"},
 ];
