@@ -16,7 +16,7 @@ class SplashScreen extends StatefulWidget {
     super.initState();
 
     Timer(Duration(seconds: 2),(){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SwipeScreens()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> SwipeScreens()));
     });
   }
   @override
@@ -26,7 +26,7 @@ class SplashScreen extends StatefulWidget {
         color: Colors.blue,
         child: Center(
           child: Text(
-            "Classico",
+            "Utility App",
             style: TextStyle(
               fontSize: 34,
               fontWeight: FontWeight.w700,
