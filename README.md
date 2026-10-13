@@ -14,12 +14,7 @@ A Flutter project with multiple screens, featuring a **Calculator** and a **BMI 
 - [Flutter](https://flutter.dev/)
 - [Dart](https://dart.dev/)
 
-## Screenshots
 
-<!-- Add screenshots here -->
-| Home | Calculator | BMI Calculator |
-|------|------------|----------------|
-| ![Home](screenshots/home.png) | ![Calculator](screenshots/calculator.png) | ![BMI](screenshots/bmi.png) |
 
 ## Getting Started
 
