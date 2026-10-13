@@ -68,13 +68,23 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 }
-class SwipeScreens extends StatelessWidget {
+class SwipeScreens extends StatefulWidget {
   const SwipeScreens({super.key});
-
+  @override
+  State<SwipeScreens> createState() =>_SwipeScreenState();
+}
+class _SwipeScreenState extends State<SwipeScreens>{
+  final PageController _controller=PageController(initialPage: 1);
+  @override
+  void dispose(){
+    _controller.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        controller: _controller,
         children: const [
           HomeScreen(title: 'Home'),
           Calculator(),
