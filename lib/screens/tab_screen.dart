@@ -16,19 +16,29 @@ class _TabScreenState extends State<TabScreen> {
           title: Text("Tab"),
           backgroundColor: const Color.fromARGB(255, 237, 238, 240),
           centerTitle: true,
-          bottom: TabBar(
-            tabs: [
-              Tab(text: "For You"),
-              Tab(text: "Following"),
-            ],
-          ),
         ),
-        body: TabBarView(
-          children: [
-            FeedList(title: "for you"),
-            FeedList(title: "following"),
-          ],
-        ),
+        body:Column(
+           children: [
+            Material(
+              color: Colors.white,
+              child: const  TabBar(
+                indicatorSize: TabBarIndicatorSize.label,
+                indicatorColor: Colors.blue,
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
+                tabs: [
+                 Tab(text: "ForYou",),
+                 Tab(text: "Following",)
+                ]
+                ),
+            ),
+            Expanded(child: TabBarView(children: [
+              FeedList(title: "For You"),
+              FeedList(title: "Following")
+            ])
+            )
+           ],
+        )
       ),
     );
   }
