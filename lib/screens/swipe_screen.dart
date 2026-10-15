@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multiple_screens/main.dart';
+import 'package:multiple_screens/screens/animate_screen.dart';
 import 'package:multiple_screens/screens/bmi_screen.dart';
 import 'package:multiple_screens/screens/calculator_screen.dart';
 
@@ -22,7 +23,7 @@ class _SwipeScreenState extends State<SwipeScreens> {
     _controller.animateToPage(
       index,
       duration: const Duration(microseconds: 600),
-      curve: Curves.easeInOut,
+      curve: Curves.easeInCubic,
     );
   }
 
@@ -42,6 +43,7 @@ class _SwipeScreenState extends State<SwipeScreens> {
           Calculator(),
           HomeScreen(title: "Home"),
           BmiScreen(),
+          AnimateScreen()
         ],
       ),
       bottomNavigationBar: NavigationBar(
@@ -51,6 +53,7 @@ class _SwipeScreenState extends State<SwipeScreens> {
         NavigationDestination(icon: Icon(Icons.calculate), label: "Calculator"),
         NavigationDestination(icon: Icon(Icons.home), label: "Home"),
         NavigationDestination(icon: Icon(Icons.accessibility_new), label: "BMI"),
+        NavigationDestination(icon: Icon(Icons.animation), label: "Animation"),
        ],
         ),
     );
