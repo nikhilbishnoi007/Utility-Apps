@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:multiple_screens/screens/bmi_screen.dart';
-import 'package:multiple_screens/screens/calculator_screen.dart';
 import 'package:multiple_screens/screens/splash_screen.dart';
 import 'package:multiple_screens/widgets/home_widgets.dart';
 
@@ -14,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Student Management',
+      title: 'Utility App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
@@ -42,54 +39,16 @@ class _HomeScreen extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 237, 238, 240),
         title: Text(widget.title),
-        actions: [
-             IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Calculator()),
-                );
-              },
-              icon: FaIcon(FontAwesomeIcons.arrowRight,size: 20,color: Colors.black,),
-            ),
-        ],
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
           // mainAxisAlignment: .center,
           children: [
             One(),
-            Two(),
-            
-        
+            Two(),  
           ],
         ),
-      ),
-    );
-  }
-}
-class SwipeScreens extends StatefulWidget {
-  const SwipeScreens({super.key});
-  @override
-  State<SwipeScreens> createState() =>_SwipeScreenState();
-}
-class _SwipeScreenState extends State<SwipeScreens>{
-  final PageController _controller=PageController(initialPage: 1);
-  @override
-  void dispose(){
-    _controller.dispose();
-    super.dispose();
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: _controller,
-        children: const [
-          HomeScreen(title: 'Home'),
-          Calculator(),
-          BmiScreen()
-        ],
       ),
     );
   }

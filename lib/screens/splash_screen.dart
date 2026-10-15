@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:multiple_screens/main.dart';
 import 'dart:async';
+import 'package:multiple_screens/screens/swipe_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
