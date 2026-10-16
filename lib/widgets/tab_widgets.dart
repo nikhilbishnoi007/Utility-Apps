@@ -1,9 +1,7 @@
 import "package:flutter/material.dart";
 
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
 import 'package:multiple_screens/models/user_model.dart';
+import 'package:multiple_screens/services/userapi.dart';
 
 class ForYou extends StatefulWidget {
   const ForYou({super.key});
@@ -15,39 +13,11 @@ class _ForYouState extends State<ForYou> with AutomaticKeepAliveClientMixin {
   bool loading = true;
   List<User> users = [];
   Future<void> fetchUsers() async {
-    try {
-      final uri = Uri.parse(
-        "https://dummydata-api-nkg8.onrender.com/api/users",
-      );
-      final res = await http.get(uri);
-      final result = jsonDecode(res.body);
-      if (res.statusCode == 200) {
-        final list = result["data"] as List<dynamic>;
-        final transform = list.map((l) {
-          return User(
-            id: l["id"],
-            name: l['name'],
-            city: l['city'],
-            age: l['age'],
-          );
-        }).toList();
-        if (!mounted) return;
-        setState(() {
-          users = transform;
-          loading = false;
-        });
-      }
-      else{
-        setState(() {
-          users=[];
-          loading=false;
-        });
-      }
-    } catch (e) {
-      debugPrint('Error: $e');
-      if (!mounted) return;
-      setState(() => loading = false);
-    }
+    final response=await UserApi.fetchUsers();
+    setState(() {
+      users=response;
+      loading=false;
+    });
   }
 
   @override
@@ -95,32 +65,11 @@ class _FollowingState extends State<Following>
   List<User> users = [];
   bool loading = true;
   Future<void> getUsers() async {
-    try {
-      final uri = Uri.parse(
-        "https://dummydata-api-nkg8.onrender.com/api/users?minAge=25",
-      );
-      final res = await http.get(uri);
-      final result = jsonDecode(res.body);
-      if (!mounted) return;
-      if(res.statusCode==200){
-      final list=result['data'] as List<dynamic>;
-      final transform=list.map((l){
-        return User(id: l['id'], name: l['name'], city: l['city'], age: l['age']);
-      }).toList();
-      setState(() {
-        users = transform;
-        loading = false;
-      });
-       }else{
-         setState(() {
-           users=[];
-           loading=false;
-         });
-       }
-    } catch (e) {
-      if (!mounted) return;
-      setState(() => loading = false);
-    }
+    final respone=await UserApi.getUsers();
+    setState(() {
+      users=respone;
+      loading=false;
+    });
   }
 
   @override
