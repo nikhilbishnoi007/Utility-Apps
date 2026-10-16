@@ -164,16 +164,11 @@ class _BmiScreenState extends State<BmiScreen> {
               child: Text("Calculate"),
             ),
           ),
-         show?Container(
-            width: 200,
-            height: 200,
+         show?Card(
             margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: bgColor,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(children: [Text(result),SizedBox(height: 20,),Text(message)]),
+            elevation: 3,
+            color: bgColor,
+            child: Column(children: [Text(result),SizedBox(height: 10,),Text(message)]),
           ):Padding(padding: EdgeInsetsGeometry.all(10),child: Text(result),)
         ],
       ),
