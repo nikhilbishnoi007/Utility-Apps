@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:multiple_screens/models/user_model.dart';
 
 class ForYou extends StatefulWidget {
   const ForYou({super.key});
@@ -12,7 +13,7 @@ class ForYou extends StatefulWidget {
 
 class _ForYouState extends State<ForYou> with AutomaticKeepAliveClientMixin {
   bool loading = true;
-  List<dynamic> users = [];
+  List<User> users = [];
   Future<void> fetchUsers() async {
     try {
       final uri = Uri.parse(
@@ -20,11 +21,28 @@ class _ForYouState extends State<ForYou> with AutomaticKeepAliveClientMixin {
       );
       final res = await http.get(uri);
       final result = jsonDecode(res.body);
-      if (!mounted) return;
-      setState(() {
-        users = res.statusCode == 200 ? result['data'] : [];
-        loading = false;
-      });
+      if (res.statusCode == 200) {
+        final list = result["data"] as List<dynamic>;
+        final transform = list.map((l) {
+          return User(
+            id: l["id"],
+            name: l['name'],
+            city: l['city'],
+            age: l['age'],
+          );
+        }).toList();
+        if (!mounted) return;
+        setState(() {
+          users = transform;
+          loading = false;
+        });
+      }
+      else{
+        setState(() {
+          users=[];
+          loading=false;
+        });
+      }
     } catch (e) {
       debugPrint('Error: $e');
       if (!mounted) return;
@@ -46,19 +64,22 @@ class _ForYouState extends State<ForYou> with AutomaticKeepAliveClientMixin {
     if (loading) return const Center(child: CircularProgressIndicator());
     return ListView.builder(
       itemCount: users.length,
-      itemBuilder: (context, index) => Card(
-        margin: EdgeInsets.all(12),
-        elevation: 3,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(10),
-        ),
-        child: ListTile(
-          leading: const CircleAvatar(child: Icon(Icons.person)),
-          title: Text("${users[index]["name"]}"),
-          subtitle: Text("${users[index]["city"]}"),
-          trailing: Text("${users[index]["age"]}"),
-        ),
-      ),
+      itemBuilder: (context, index) {
+        final user = users[index];
+        return Card(
+          margin: EdgeInsets.all(12),
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(10),
+          ),
+          child: ListTile(
+            leading: const CircleAvatar(child: Icon(Icons.person)),
+            title: Text(user.name),
+            subtitle: Text(user.city),
+            trailing: Text("${user.age}"),
+          ),
+        );
+      },
     );
   }
 }
@@ -71,7 +92,7 @@ class Following extends StatefulWidget {
 
 class _FollowingState extends State<Following>
     with AutomaticKeepAliveClientMixin {
-  List<dynamic> users = [];
+  List<User> users = [];
   bool loading = true;
   Future<void> getUsers() async {
     try {
@@ -81,10 +102,21 @@ class _FollowingState extends State<Following>
       final res = await http.get(uri);
       final result = jsonDecode(res.body);
       if (!mounted) return;
+      if(res.statusCode==200){
+      final list=result['data'] as List<dynamic>;
+      final transform=list.map((l){
+        return User(id: l['id'], name: l['name'], city: l['city'], age: l['age']);
+      }).toList();
       setState(() {
-        users = res.statusCode == 200 ? result["data"] : [];
+        users = transform;
         loading = false;
       });
+       }else{
+         setState(() {
+           users=[];
+           loading=false;
+         });
+       }
     } catch (e) {
       if (!mounted) return;
       setState(() => loading = false);
@@ -102,22 +134,25 @@ class _FollowingState extends State<Following>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    if(loading) return Center(child: CircularProgressIndicator());
+    if (loading) return Center(child: CircularProgressIndicator());
     return ListView.builder(
       itemCount: users.length,
-      itemBuilder: (context, index) => Card(
+      itemBuilder: (context, index){
+        final user=users[index];
+        return  Card(
         margin: EdgeInsets.all(12),
         elevation: 3,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(12)
+          borderRadius: BorderRadiusGeometry.circular(12),
         ),
         child: ListTile(
-          leading: const CircleAvatar(child: Icon(Icons.person),),
-          title: Text("${users[index]["name"]}"),
-          subtitle: Text("${users[index]["city"]}"),
-          trailing: Text("${users[index]["age"]}"),
+          leading: const CircleAvatar(child: Icon(Icons.person)),
+          title: Text(user.name),
+          subtitle: Text(user.city),
+          trailing: Text("${user.age}"),
         ),
-      ),
+      );
+      }
     );
   }
 }
