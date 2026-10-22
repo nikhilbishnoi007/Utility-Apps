@@ -52,12 +52,7 @@ class _SwipeScreenState extends State<SwipeScreens> {
       bottomNavigationBar: Padding(
         padding: EdgeInsetsGeometry.fromLTRB(12, 14, 8, 16),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-            bottomRight: Radius.circular(20),
-          ),
+          borderRadius: BorderRadius.circular(20),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
             child: NavigationBarTheme(
@@ -73,7 +68,6 @@ class _SwipeScreenState extends State<SwipeScreens> {
                 ),
               ),
               child: NavigationBar(
-                // backgroundColor: Colors.transparent,
                 elevation: 0,
                 selectedIndex: _currentindex,
                 onDestinationSelected: _onTabTapped,
